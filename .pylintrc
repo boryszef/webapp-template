@@ -11,3 +11,5 @@ ignored-argument-names=
     args,
     kwargs
 
+[DESIGN]
+max-parents=12
