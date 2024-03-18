@@ -1,3 +1,7 @@
+"""
+Celery configuration
+"""
+
 import os
 
 from celery import Celery
@@ -11,12 +15,11 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 @setup_logging.connect
-def config_loggers(*args, **kwags):
+def config_loggers(*args, **kwargs):
+    """
+    Configure logging
+    """
+    # pylint: disable=import-outside-toplevel
     from logging.config import dictConfig
     from django.conf import settings
     dictConfig(settings.LOGGING)
-
-
-@app.task(bind=True, ignore_result=True)
-def debug_task(self):
-    print(f'Request: {self.request!r}')
