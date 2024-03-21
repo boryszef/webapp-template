@@ -22,7 +22,7 @@ def test_get_list():
     baker.make('crud.Data')
     client = APIClient()
     response = client.get(
-        reverse('data-list')
+        reverse('api:data-list')
     )
     assert response.status_code == 200
     assert len(response.json()) == 2
@@ -36,7 +36,7 @@ def test_get_specific():
     item = baker.make('crud.Data')
     client = APIClient()
     response = client.get(
-        reverse('data-detail', kwargs={'pk': item.id})
+        reverse('api:data-detail', kwargs={'pk': item.id})
     )
     assert response.status_code == 200
     assert response.json()['name'] == item.name
@@ -50,7 +50,7 @@ def test_create_instance():
     name = 'foobar'
     client = APIClient()
     response = client.post(
-        reverse('data-list'),
+        reverse('api:data-list'),
         {'name': name, 'value': 13},
         format='json'
     )
@@ -67,7 +67,7 @@ def test_delete_instance():
     item = baker.make('crud.Data')
     client = APIClient()
     response = client.delete(
-        reverse('data-detail', kwargs={'pk': item.id})
+        reverse('api:data-detail', kwargs={'pk': item.id})
     )
     assert response.status_code == 204
     with pytest.raises(ObjectDoesNotExist):
@@ -95,7 +95,7 @@ def test_post_triggers_recompute(mock_recompute):
     client = APIClient()
     for _ in range(3):
         client.post(
-            reverse('data-list'),
+            reverse('api:data-list'),
             {'name': 'foo', 'value': 13},
             format='json'
         )
@@ -112,6 +112,6 @@ def test_delete_triggers_recompute(mock_recompute):
     item = baker.make('crud.Data')
     client = APIClient()
     client.post(
-        reverse('data-detail', kwargs={'pk': item.id})
+        reverse('api:data-detail', kwargs={'pk': item.id})
     )
     assert len(mock_recompute.delay.mock_calls) == 1

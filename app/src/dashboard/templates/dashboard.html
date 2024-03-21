@@ -1,0 +1,7 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<div class="container">
+{% for item in urls %}
+    <div class="box"><a href="{{item.anchor}}">{{item.name | upper}}</a></div>
+{% endfor %}
+</div>

@@ -1,0 +1,24 @@
+div.container {
+    width: 100%;
+    text-align: center;
+}
+div.box {
+    background-color: #eee;
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 5px;
+}
+div.box > a {
+    text-decoration: none;
+    color: black;
+}
+div.box > a:hover {
+    font-weight: bold;
+}
+div.box > a:visited {
+    color: #333;
+}
