@@ -17,7 +17,7 @@ docker-compose up -d
 ```
 It will start the following services:
 | URL                            | Service                |
-+--------------------------------+------------------------+
+|--------------------------------|------------------------|
 | http://127.0.0.1/schema/ui/    | Swagger API            |
 | http://127.0.0.1/schema/redoc/ | API documentation      |
 | http://127.0.0.1:3000/         | Grafana                |
