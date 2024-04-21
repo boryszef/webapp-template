@@ -15,6 +15,9 @@ Then simply start using docker-compose:
 ```
 docker-compose up -d
 ```
+
+![Console screenshot](images/start_docker.gif)
+
 It will start the following services:
 | URL                            | Service                |
 |--------------------------------|------------------------|
